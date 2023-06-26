@@ -42,6 +42,14 @@ pipeline {
      }
    }
 
+   stage('Testing') {
+     steps {
+       dir('frontend') {
+         sh 'sleep 5'
+       }
+     }
+   }
+
    stage('Deploy to remote server') {
      steps {
        sshPublisher(publishers: [sshPublisherDesc(configName: 'server-target', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '''docker compose up -d
