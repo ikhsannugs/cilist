@@ -1,28 +1,9 @@
 version: '3.8'
 
-services:
-  database:
-    container_name: cilist-db
-    image: ikhsannugs/cilist-db:${GIT_COMMIT_SHORT}
-  
-  backend:
-    image: ikhsannugs/cilist-be:${GIT_COMMIT_SHORT}
-    ports:
-      - "5000:5000"
-    depends_on:
-      - database
-    environment:
-      - BASE_URL_PORT=5000
-      - MYSQL_ROOT_PASSWORD=s3k0l4hd3v0p5
-      - DATABASE_USERNAME=people
-      - DATABASE_PASSWORD=people
-      - DATABASE_DATABASE=people
-      - DATABASE_HOST=database
-      - DATABASE_PORT=3306
-  
+services:  
   frontend:
-    image: ikhsannugs/cilist-fe:${GIT_COMMIT_SHORT}
+    build: ./frontend/Dockerfile
     ports:
       - "3000:3000"
     environment:
-      - REACT_APP_BACKEND_URL=http://13.235.134.85:5000
+      - REACT_APP_BACKEND_URL=http://192.168.60.102:5000
