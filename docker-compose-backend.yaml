@@ -10,7 +10,7 @@ services:
     ports:
       - "5000:5000"
     depends_on:
-      - database
+      - db
     environment:
       - BASE_URL_PORT=5000
       - MYSQL_ROOT_PASSWORD=s3k0l4hd3v0p5
